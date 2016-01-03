@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="300.0" maxWidth="500.0" minHeight="300.0" minWidth="500.0" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Intromenucontroller">
+   <children>
+      <Label layoutX="126.0" layoutY="33.0" prefHeight="18.0" prefWidth="247.0" text="What do you want to do?" />
+      <Group layoutX="112.0" layoutY="30.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#readOnline" prefHeight="25.0" prefWidth="250.0" text="Watch data online." />
+            <Button layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#tableMenu" prefHeight="25.0" prefWidth="250.0" text="Table menu." />
+            <Button layoutX="14.0" layoutY="145.0" mnemonicParsing="false" onAction="#dataConfg" prefHeight="25.0" prefWidth="250.0" text="Database configuration." />
+            <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#lookFor" prefHeight="25.0" prefWidth="250.0" text="Look for an especific register." />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
