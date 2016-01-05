@@ -19,7 +19,7 @@ import View.Databasemanager;
 
 public class ParseSQlite {
 
-	Connections conn= new Connections();
+	Connections conn = new Connections();
 	private int rows;
 	private StringBuilder sb = new StringBuilder();
 	private PreparedStatement pstmt = null;
@@ -82,31 +82,30 @@ public class ParseSQlite {
 		try {
 			NodeList movieList = doc.getElementsByTagName("movie");
 			Node p = movieList.item(0);
-if(p!=null){
-			if (p.getNodeType() == Node.ELEMENT_NODE) {
-				Element movie = (Element) p;
-				PreparedStatement state = connect.prepareStatement("INSERT INTO " + database
-						+ " (Id, Title, Runtime, Genre, Year, Plot, Actors, Director) VALUES (?,?,?,?,?,?,?,?)");
+			if (p != null) {
+				if (p.getNodeType() == Node.ELEMENT_NODE) {
+					Element movie = (Element) p;
+					PreparedStatement state = connect.prepareStatement("INSERT INTO " + database
+							+ " (Id, Title, Runtime, Genre, Year, Plot, Actors, Director) VALUES (?,?,?,?,?,?,?,?)");
 
-				state.setString(1, Id);
-				state.setString(2, movie.getAttribute("title"));
-				state.setString(3, movie.getAttribute("runtime"));
-				state.setString(4, movie.getAttribute("genre"));
-				state.setString(5, movie.getAttribute("year"));
-				state.setString(6, movie.getAttribute("plot"));
-				state.setString(7, movie.getAttribute("actors"));
-				state.setString(8, movie.getAttribute("director"));
+					state.setString(1, Id);
+					state.setString(2, movie.getAttribute("title"));
+					state.setString(3, movie.getAttribute("runtime"));
+					state.setString(4, movie.getAttribute("genre"));
+					state.setString(5, movie.getAttribute("year"));
+					state.setString(6, movie.getAttribute("plot"));
+					state.setString(7, movie.getAttribute("actors"));
+					state.setString(8, movie.getAttribute("director"));
 
-				rows = state.executeUpdate();
-				System.out.println(rows + " rows added.");
+					rows = state.executeUpdate();
+					System.out.println(rows + " rows added.");
 
-				state.close();
+					state.close();
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "There's no data no write.", "Error.", JOptionPane.WARNING_MESSAGE);
 			}
-		}else{
-			JOptionPane.showMessageDialog(null,
-					"There's no data no write.", "Error.",
-					JOptionPane.WARNING_MESSAGE);
-		}} catch (Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			// If the database name is incorrect, the method will launch again.
 		}
@@ -126,7 +125,7 @@ if(p!=null){
 			ResultSet rs = stmt.executeQuery();
 			if (rs != null) {
 				while (rs.next()) {
-					if(separ>0){
+					if (separ > 0) {
 						sb.append("\n");
 						sb.append("\n");
 						sb.append("---------------------------------------------");
@@ -160,12 +159,11 @@ if(p!=null){
 					sb.append("Director: ");
 					sb.append(rs.getString("director"));
 					sb.append("\n");
-					
+
 				}
 				System.out.println(sb.toString());
 			} else {
-				JOptionPane.showMessageDialog(null,
-						"There's no data with that Id.", "Error.",
+				JOptionPane.showMessageDialog(null, "There's no data with that Id.", "Error.",
 						JOptionPane.WARNING_MESSAGE);
 			}
 			rs.close();
@@ -180,22 +178,21 @@ if(p!=null){
 		}
 	}
 
-	
-	public void readWrittenParameters(String id, String title, String runtime, String genre, String actors, String director,
-			Connection conn, String database) throws IOException {
-		String select = "Select * from " + database ;
+	public void readWrittenParameters(String id, String title, String runtime, String genre, String actors,
+			String director, Connection conn, String database) throws IOException {
+		String select = "Select * from " + database;
 
 		if (!id.equals("")) {
-			if(coma == 0){
-				select +=" WHERE ";
+			if (coma == 0) {
+				select += " WHERE ";
 			}
 			select += " Id= '" + id + "'";
 			coma++;
 		}
 		if (!title.equals("")) {
 			if (coma == 0) {
-				select +=  " WHERE ";
-			}else{
+				select += " WHERE ";
+			} else {
 				select += " AND ";
 			}
 			select += " title= '" + title + "' ";
@@ -203,8 +200,8 @@ if(p!=null){
 		}
 		if (!runtime.equals("")) {
 			if (coma == 0) {
-				select +=  " WHERE ";
-			}else{
+				select += " WHERE ";
+			} else {
 				select += " AND ";
 			}
 			select += " runtime= '" + runtime + "' ";
@@ -212,8 +209,8 @@ if(p!=null){
 		}
 		if (!genre.equals("")) {
 			if (coma == 0) {
-				select +=  " WHERE ";
-			}else{
+				select += " WHERE ";
+			} else {
 				select += " AND ";
 			}
 			select += " genre= '" + genre + "' ";
@@ -221,8 +218,8 @@ if(p!=null){
 		}
 		if (!actors.equals("")) {
 			if (coma == 0) {
-				select +=  " WHERE ";
-			}else{
+				select += " WHERE ";
+			} else {
 				select += " AND ";
 			}
 			select += " actors= '" + actors + "' ";
@@ -230,8 +227,8 @@ if(p!=null){
 		}
 		if (!director.equals("")) {
 			if (coma == 0) {
-				select +=  " WHERE ";
-			}else{
+				select += " WHERE ";
+			} else {
 				select += " AND ";
 			}
 			select += " director= '" + genre + "' ";
@@ -244,7 +241,7 @@ if(p!=null){
 			int separ = 0;
 			if (rs != null) {
 				while (rs.next()) {
-					if(separ>0){
+					if (separ > 0) {
 						sb.append("\n");
 						sb.append("\n");
 						sb.append("---------------------------------------------");
@@ -278,7 +275,7 @@ if(p!=null){
 					sb.append("Director: ");
 					sb.append(rs.getString("director"));
 					sb.append("\n");
-					
+
 				}
 				System.out.println(sb.toString());
 			} else {
@@ -295,31 +292,87 @@ if(p!=null){
 			// conn.SQLiteConnect());
 		}
 	}
-	
 
 	public void deleteData(String database, String Id, Connection connect) throws IOException {
 
+		if(!Id.equals("")){
 		try {
-			String delete ="Delete  from " + database + " where Id = '" + Id + "'";
-			if(!Id.equals("")){
-			PreparedStatement stmt = connect.prepareStatement(delete);
-			rows = stmt.executeUpdate();
-			System.out.println(rows + " rows deleted.");
-			System.out.println(delete);
-			stmt.close();
-			}else{
-				JOptionPane.showMessageDialog(null,
-						"You have to write the Id of the register to delete.", "Error.",
-						JOptionPane.WARNING_MESSAGE);
-			}
+			String delete = "Delete  from " + database + " where Id = '" + Id + "'";
+				PreparedStatement stmt = connect.prepareStatement(delete);
+				rows = stmt.executeUpdate();
+				System.out.println(rows + " rows deleted.");
+				System.out.println(delete);
+				stmt.close();	
 		} catch (Exception ex) {
 			System.out.println("Please, write a correct database name.");
 			ex.printStackTrace();
 		}
+		}else{
+			JOptionPane.showMessageDialog(null,
+					"You have to write the Id of the register.", "Error.",
+					JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+	public void dropTables(String database1, String database2, Connection conn) {
+		String create = "DROP TABLE IF EXISTS ";
+		int rows = 0;
+		byte count = 0;
+		if (!database1.equals("")) {
+			create += database1;
+			count++;
+		}
+		if (!database2.equals("")) {
+			if (count > 0) {
+				create += ",";
+			}
+			create += database2;
+		}
+		System.out.println(create);
+		try {
+			PreparedStatement stmt = conn.prepareStatement(create);
+			rows = stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteTables(String database1, String database2, Connection conn) {
+
+		if (database1.equals("") && database2.equals("")) {
+			JOptionPane.showMessageDialog(null, "You have to select at least 1 database first.", "Error.",
+					JOptionPane.WARNING_MESSAGE);
+		} else {
+			String create = "DELETE FROM ";
+			if (!database1.equals("")) {	
+				create += database1;
+				try {
+					PreparedStatement stmt = conn.prepareStatement(create);
+					rows = stmt.executeUpdate();
+					stmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			create = "DELETE FROM ";
+			if (!database2.equals("")) {
+
+				create += database2;
+				try {
+					PreparedStatement stmt = conn.prepareStatement(create);
+					rows = stmt.executeUpdate();
+					stmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	public void updateRow(String id, String title, String runtime, String genre, String actors, String director,
-			Connection conn, String database)  {
+			Connection conn, String database) {
 		String update = "Update " + database + " SET ";
 		if (!id.equals("")) {
 			update += "Id= '" + id + "'";
@@ -370,11 +423,10 @@ if(p!=null){
 			readWrittenData(database, id, conn);
 			stmt.close();
 		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,
-					"You have to instert the id of the register to update.", "Error.",
+			JOptionPane.showMessageDialog(null, "You have to instert the id of the register to update.", "Error.",
 					JOptionPane.WARNING_MESSAGE);
-		} catch (Exception e){
-			
+		} catch (Exception e) {
+
 		}
 	}
 

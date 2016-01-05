@@ -12,6 +12,7 @@ public class Intromenucontroller extends Application {
 	Readonline read = new Readonline();
 	Readoffline off = new Readoffline();
 	Databasemanager data = new Databasemanager();
+	Manager mana = new Manager();
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -39,7 +40,7 @@ public class Intromenucontroller extends Application {
 	}
 	
 	public void dataConfg(){
-		
+		mana.start();
 	}
 	
 	

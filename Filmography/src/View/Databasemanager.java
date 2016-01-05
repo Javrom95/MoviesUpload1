@@ -136,6 +136,7 @@ public void searchData(){
 	public void delete(){
 		ParseSQlite parse = new ParseSQlite();
 		Connections conn = new Connections();
+		Id=Idtext.getText().toString();
 		if(!database.equals("")){
 		try {
 			parse.deleteData(database, Id, conn.SQLiteConnect());
