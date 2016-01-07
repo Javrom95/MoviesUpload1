@@ -71,12 +71,7 @@ public class ParseSQlite {
 		return sb.toString();
 	}
 
-	/**
-	 * Gets the online data to write it.
-	 * 
-	 * @param doc
-	 * @param type
-	 */
+
 	public void getDataToWrite(Document doc, String Id, String database, Connection connect) {
 
 		try {
@@ -111,13 +106,7 @@ public class ParseSQlite {
 		}
 	}
 
-	/**
-	 * Reads the written data from a specific database and a specific item.
-	 * 
-	 * @param type
-	 * @param name
-	 * @throws IOException
-	 */
+
 	public void readWrittenData(String database, String Id, Connection connect) throws IOException {
 		int separ = 0;
 		try {
