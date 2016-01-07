@@ -149,7 +149,5 @@ public void searchData(){
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
-	
-	
-	
+
 }

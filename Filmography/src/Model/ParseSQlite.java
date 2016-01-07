@@ -416,7 +416,7 @@ public class ParseSQlite {
 		update += "WHERE Id ='" + id + "' ";
 		System.out.println(update);
 		try {
-			Databasemanager data = new Databasemanager();
+			//Databasemanager data = new Databasemanager();
 			PreparedStatement stmt = conn.prepareStatement(update);
 			rows = stmt.executeUpdate();
 			System.out.println("Updated row.");
@@ -430,4 +430,21 @@ public class ParseSQlite {
 		}
 	}
 
+	public String checkId(String database, String Id, Connection conn){
+		String select="Select Id from "+database+" where Id='"+Id+"'";
+		System.out.println(select);
+		String Idcheck="";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(select);
+			ResultSet rs = stmt.executeQuery();
+			Idcheck=rs.getString("Id");
+			System.out.println(Idcheck);
+			rs.close();
+			stmt.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		return Idcheck;
+	}
+	
 }

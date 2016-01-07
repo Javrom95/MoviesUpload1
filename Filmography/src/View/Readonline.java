@@ -72,7 +72,14 @@ public class Readonline {
 		Connections conn = new Connections();
 		if(!Id.getText().toString().equals("")){
 		if(!database.equals("")){
-		parse.getDataToWrite(conn.transformXML(name.getText(), database),Id.getText().toString(), database, conn.SQLiteConnect());
+			if(!parse.checkId(database, Id.getText(), conn.SQLiteConnect()).equals(Id.getText())){
+				System.out.println(parse.checkId(database, Id.getText(), conn.SQLiteConnect()));
+				parse.getDataToWrite(conn.transformXML(name.getText(), database),Id.getText().toString(), database, conn.SQLiteConnect());
+			}else{
+				JOptionPane.showMessageDialog(null,
+						"You can't put an Id in a database twice.", "Error.",
+						JOptionPane.WARNING_MESSAGE);
+			}
 		}else{
 			JOptionPane.showMessageDialog(null,
 					"You have to choose a database first.", "Error.",
