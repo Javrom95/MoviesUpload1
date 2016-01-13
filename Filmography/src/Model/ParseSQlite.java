@@ -71,7 +71,6 @@ public class ParseSQlite {
 		return sb.toString();
 	}
 
-
 	public void getDataToWrite(Document doc, String Id, String database, Connection connect) {
 
 		try {
@@ -105,7 +104,6 @@ public class ParseSQlite {
 			// If the database name is incorrect, the method will launch again.
 		}
 	}
-
 
 	public void readWrittenData(String database, String Id, Connection connect) throws IOException {
 		int separ = 0;
@@ -284,21 +282,20 @@ public class ParseSQlite {
 
 	public void deleteData(String database, String Id, Connection connect) throws IOException {
 
-		if(!Id.equals("")){
-		try {
-			String delete = "Delete  from " + database + " where Id = '" + Id + "'";
+		if (!Id.equals("")) {
+			try {
+				String delete = "Delete  from " + database + " where Id = '" + Id + "'";
 				PreparedStatement stmt = connect.prepareStatement(delete);
 				rows = stmt.executeUpdate();
 				System.out.println(rows + " rows deleted.");
 				System.out.println(delete);
-				stmt.close();	
-		} catch (Exception ex) {
-			System.out.println("Please, write a correct database name.");
-			ex.printStackTrace();
-		}
-		}else{
-			JOptionPane.showMessageDialog(null,
-					"You have to write the Id of the register.", "Error.",
+				stmt.close();
+			} catch (Exception ex) {
+				System.out.println("Please, write a correct database name.");
+				ex.printStackTrace();
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "You have to write the Id of the register.", "Error.",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -334,7 +331,7 @@ public class ParseSQlite {
 					JOptionPane.WARNING_MESSAGE);
 		} else {
 			String create = "DELETE FROM ";
-			if (!database1.equals("")) {	
+			if (!database1.equals("")) {
 				create += database1;
 				try {
 					PreparedStatement stmt = conn.prepareStatement(create);
@@ -405,7 +402,6 @@ public class ParseSQlite {
 		update += "WHERE Id ='" + id + "' ";
 		System.out.println(update);
 		try {
-			//Databasemanager data = new Databasemanager();
 			PreparedStatement stmt = conn.prepareStatement(update);
 			rows = stmt.executeUpdate();
 			System.out.println("Updated row.");
@@ -419,21 +415,22 @@ public class ParseSQlite {
 		}
 	}
 
-	public String checkId(String database, String Id, Connection conn){
-		String select="Select Id from "+database+" where Id='"+Id+"'";
+	public String checkId(String database, String Id, Connection conn) {
+		String select = "Select Id from " + database + " where Id='" + Id + "'";
 		System.out.println(select);
-		String Idcheck="";
+		String Idcheck = "";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(select);
 			ResultSet rs = stmt.executeQuery();
-			Idcheck=rs.getString("Id");
-			System.out.println(Idcheck);
+			while(rs.next()){
+			Idcheck = rs.getString("Id");
+			}
 			rs.close();
 			stmt.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return Idcheck;
 	}
-	
+
 }

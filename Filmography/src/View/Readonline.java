@@ -29,10 +29,9 @@ public class Readonline {
 	private Button save1;
 	@FXML
 	private TextField Id;
-	
-	private String nomb="";
+
+	private String nomb = "";
 	private String database = "";
-	
 
 	public void start() {
 		Stage stage = new Stage();
@@ -61,34 +60,32 @@ public class Readonline {
 	public void read() {
 		ParseSQlite parse = new ParseSQlite();
 		Connections conn = new Connections();
-		nomb=name.getText();
+		nomb = name.getText();
 		parse.getDataToSee(conn.transformXML(nomb, database));
 		textarea.setText(parse.printOnlineData());
-		
+
 	}
-	
-	public void Write(){
+
+	public void Write() {
 		ParseSQlite parse = new ParseSQlite();
 		Connections conn = new Connections();
-		if(!Id.getText().toString().equals("")){
-		if(!database.equals("")){
-			if(!parse.checkId(database, Id.getText(), conn.SQLiteConnect()).equals(Id.getText())){
-				System.out.println(parse.checkId(database, Id.getText(), conn.SQLiteConnect()));
-				parse.getDataToWrite(conn.transformXML(name.getText(), database),Id.getText().toString(), database, conn.SQLiteConnect());
-			}else{
-				JOptionPane.showMessageDialog(null,
-						"You can't put an Id in a database twice.", "Error.",
+		if (!Id.getText().toString().equals("")) {
+			if (!database.equals("")) {
+				if (!parse.checkId(database, Id.getText().toString(), conn.SQLiteConnect())
+						.equals(Id.getText().toString())){
+					parse.getDataToWrite(conn.transformXML(name.getText(), database), Id.getText().toString(), database,
+							conn.SQLiteConnect());}
+				else{
+					JOptionPane.showMessageDialog(null, "You can not have two same Ids in the same database.", "Error.",
+							JOptionPane.WARNING_MESSAGE);
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "You have to choose a database first.", "Error.",
 						JOptionPane.WARNING_MESSAGE);
 			}
-		}else{
-			JOptionPane.showMessageDialog(null,
-					"You have to choose a database first.", "Error.",
+		} else {
+			JOptionPane.showMessageDialog(null, "You have to write the Id of the new register.", "Error.",
 					JOptionPane.WARNING_MESSAGE);
-		}	
-		}else{
-			JOptionPane.showMessageDialog(null,
-					"You have to write the Id of the new register.", "Error.",
-					JOptionPane.WARNING_MESSAGE);
-		}		
+		}
 	}
 }
