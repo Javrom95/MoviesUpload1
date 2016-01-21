@@ -7,37 +7,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Readonline">
+<AnchorPane prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #1aa1ff;" stylesheets="@../../bin/View/choosedatabase.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Readonline">
    <children>
-      <SplitPane dividerPositions="0.6561604584527221" prefHeight="300.0" prefWidth="700.0">
+      <SplitPane dividerPositions="0.498567335243553" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #80b3ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="165.0">
                <children>
-                  <Label layoutX="-1.0" layoutY="2.0" prefHeight="27.0" prefWidth="363.0" text="Parameters of search:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Group />
-                  <Label layoutX="10.0" layoutY="98.0" text="Write the name:" AnchorPane.leftAnchor="10.0" />
-                  <Label layoutX="10.0" layoutY="27.0" text="Is it a movie or a series?" />
-                  <Button layoutX="11.0" layoutY="162.0" mnemonicParsing="false" onAction="#read" text="Search." AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="11.0" />
-                  <TextField fx:id="name" layoutX="11.0" layoutY="124.0" prefHeight="25.0" prefWidth="116.0" AnchorPane.leftAnchor="11.0" />
-                  <Group>
+                  <GridPane layoutX="18.0" layoutY="-3.0" prefHeight="291.0" prefWidth="310.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="-3.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <AnchorPane layoutX="11.0" layoutY="83.0" />
+                        <Label prefHeight="27.0" prefWidth="363.0" text="Parameters of search:" textAlignment="CENTER" textFill="WHITE" />
+                        <Label text="Is it a movie or a series?" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Group GridPane.rowIndex="2">
+                           <children>
+                              <RadioButton fx:id="series" layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#typeseries" text="Series." textFill="WHITE">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="movieseries" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="movie" layoutX="11.0" layoutY="51.0" mnemonicParsing="false" onAction="#typemovie" text="Movie." textFill="WHITE" toggleGroup="$movieseries" />
+                           </children>
+                        </Group>
+                        <Label text="Write the name:" textFill="WHITE" GridPane.rowIndex="3" />
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: #cce5ff;" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#read" prefHeight="25.0" prefWidth="116.0" styleClass="searchbutton" text="Search." GridPane.rowIndex="5" />
+                        <TextField fx:id="Id" style="-fx-background-color: #cce5ff;" GridPane.rowIndex="7" />
+                        <Label text="Want to save it? Write the Id for the register:" textFill="WHITE" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#Write" prefHeight="31.0" prefWidth="116.0" text="Save." GridPane.rowIndex="8" />
                      </children>
-                  </Group>
-                  <Group />
-                  <Button layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#Write" text="Save." AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" />
-                  <Group>
-                     <children>
-                        <RadioButton fx:id="series" layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#typeseries" text="Series.">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="movieseries" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="movie" layoutX="11.0" layoutY="51.0" mnemonicParsing="false" onAction="#typemovie" text="Movie." toggleGroup="$movieseries" />
-                     </children>
-                  </Group>
-                  <Label layoutX="11.0" layoutY="194.0" text="Want to save it? Write the Id for the register:" />
-                  <TextField fx:id="Id" layoutX="12.0" layoutY="223.0" />
+                  </GridPane>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="266.0">

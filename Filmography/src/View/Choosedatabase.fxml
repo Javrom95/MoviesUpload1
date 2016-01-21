@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="300.0" maxWidth="500.0" minHeight="300.0" minWidth="500.0" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Intromenucontroller">
+<AnchorPane maxHeight="300.0" maxWidth="500.0" minHeight="300.0" minWidth="500.0" prefHeight="300.0" prefWidth="500.0" styleClass="background" stylesheets="@choosedatabase.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Intromenucontroller">
    <children>
-      <Label layoutX="126.0" layoutY="33.0" prefHeight="18.0" prefWidth="247.0" text="What do you want to do?" />
-      <Group layoutX="112.0" layoutY="30.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="75.0">
+      <Label layoutX="126.0" layoutY="33.0" prefHeight="18.0" prefWidth="247.0" text="What do you want to do?" textFill="WHITE" AnchorPane.topAnchor="33.0" />
+      <Group>
          <children>
-            <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#readOnline" prefHeight="25.0" prefWidth="250.0" text="Watch data online." />
-            <Button layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#tableMenu" prefHeight="25.0" prefWidth="250.0" text="Table menu." />
-            <Button layoutX="14.0" layoutY="145.0" mnemonicParsing="false" onAction="#dataConfg" prefHeight="25.0" prefWidth="250.0" text="Database configuration." />
-            <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#lookFor" prefHeight="25.0" prefWidth="250.0" text="Look for an especific register." />
+            <Button layoutX="101.0" layoutY="106.0" mnemonicParsing="false" onAction="#lookFor" prefHeight="31.0" prefWidth="303.0" text="Look for an especific register." />
+            <Button layoutX="100.0" layoutY="168.0" mnemonicParsing="false" onAction="#dataConfg" prefHeight="31.0" prefWidth="303.0" text="Database configuration." />
+            <Button layoutX="101.0" layoutY="137.0" mnemonicParsing="false" onAction="#tableMenu" prefHeight="31.0" prefWidth="303.0" text="Table menu." />
+            <Button layoutX="101.0" layoutY="75.0" mnemonicParsing="false" onAction="#readOnline" prefHeight="31.0" prefWidth="303.0" text="Watch data online.">
+               <font>
+                  <Font name="Liberation Mono" size="13.0" />
+               </font></Button>
          </children>
       </Group>
    </children>

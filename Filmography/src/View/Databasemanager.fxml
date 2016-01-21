@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Databasemanager">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../bin/View/choosedatabase.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Databasemanager">
    <children>
-      <SplitPane dividerPositions="0.3207126948775056" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.4465478841870824" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #80b3ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="452.0">
                <children>
@@ -27,43 +27,43 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="Idtext" GridPane.columnIndex="1" />
-                        <TextField fx:id="Titletext" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="Runtimetext" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="Genretext" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="Actorstext" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="Directortext" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Id:" />
-                        <Label text="Title:" GridPane.rowIndex="1" />
-                        <Label text="Runtime:" GridPane.rowIndex="2" />
-                        <Label text="Genre:" GridPane.rowIndex="3" />
-                        <Label text="Actors:" GridPane.rowIndex="4" />
-                        <Label text="Director:" GridPane.rowIndex="5" />
+                        <TextField fx:id="Idtext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" />
+                        <TextField fx:id="Titletext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="Runtimetext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="Genretext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="Actorstext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="Directortext" style="-fx-background-color: #cce5ff;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Id:" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Title:" GridPane.rowIndex="1" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Runtime:" GridPane.rowIndex="2" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Genre:" GridPane.rowIndex="3" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Actors:" GridPane.rowIndex="4" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="Director:" GridPane.rowIndex="5" />
                         <Group GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <children>
-                              <RadioButton layoutX="38.0" layoutY="289.0" mnemonicParsing="false" onAction="#typeseries" text="Series.">
+                              <RadioButton layoutX="38.0" layoutY="289.0" mnemonicParsing="false" onAction="#typeseries" style="-fx-text-fill: #FFFFFF;" text="Series.">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="movieseries" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton layoutX="38.0" layoutY="271.0" mnemonicParsing="false" onAction="#typemovie" text="Movies." toggleGroup="$movieseries" />
+                              <RadioButton layoutX="38.0" layoutY="271.0" mnemonicParsing="false" onAction="#typemovie" style="-fx-text-fill: #FFFFFF;" text="Movies." toggleGroup="$movieseries" />
                            </children>
                         </Group>
-                        <Label text="In what database?" GridPane.rowIndex="6" />
+                        <Label style="-fx-text-fill: #FFFFFF;" text="In what database?" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                   <Group AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
                      <children>
-                        <Button layoutY="460.0" mnemonicParsing="false" onAction="#searchData" text="Search." />
-                        <Button layoutX="64.0" layoutY="460.0" mnemonicParsing="false" onAction="#updateTable" text="Update." AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="64.0" />
-                        <Button layoutX="133.0" layoutY="460.0" mnemonicParsing="false" onAction="#delete" text="Delete." />
+                        <Button layoutX="141.0" layoutY="457.0" mnemonicParsing="false" onAction="#updateTable" prefHeight="32.0" prefWidth="130.0" text="Update." />
+                        <Button layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#searchData" prefHeight="32.0" prefWidth="130.0" styleClass="searchbutton" text="Search." />
+                        <Button layoutX="268.0" layoutY="457.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="120.0" styleClass="deletebutton" text="Delete." />
                      </children>
                   </Group>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextArea fx:id="finaldata" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <TextArea fx:id="finaldata" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #cce5ff;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
         </items>
